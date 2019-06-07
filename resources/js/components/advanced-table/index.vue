@@ -44,7 +44,7 @@
       </nav>
 
       <div class="records" v-if="options.total > 0">
-        Showing {{ records - (options.limit - 1) }} to {{ (records).toLocaleString()  }} records of {{ options.total.toLocaleString() }} records
+        Showing {{ toNumberString(records - (options.limit - 1)) }} to {{ toNumberString(recordsInPage)  }} records of {{ toNumberString(totalRecords) }} records
       </div>
     </div>
   </div>
@@ -98,11 +98,19 @@ export default {
 
   computed: {
     records() {
-      return this.options.limit * this.options.page
+      return this.options.limit * this.options.page;
     },
 
     total() {
       return Math.ceil(this.options.total / this.options.limit);
+    },
+
+    totalRecords() {
+      return this.options.total;
+    },
+
+    recordsInPage() {
+      return (this.records > this.totalRecords) ? this.totalRecords : this.records;
     },
 
     range() {
@@ -136,6 +144,9 @@ export default {
   },
   
   methods: {
+    toNumberString(value) {
+      return value.toLocaleString();
+    },
     getContent: function() {
       const parent = this;
       axios.get(`${parent.url}`, {
