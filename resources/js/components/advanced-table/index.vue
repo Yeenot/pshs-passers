@@ -171,6 +171,10 @@ export default {
         this.options.page = page;
         this.getContent();
       }
+    },
+
+    reload() {
+      this.getContent();
     }
   }
 };

@@ -19,7 +19,11 @@ class PassersController extends Controller
             
         if ($search != '') {
             $passers->whereRaw("MATCH(surname, firstname, school, division) AGAINST(? IN NATURAL LANGUAGE MODE)", 
-            array($search));
+                array($search))
+                ->orWhere('surname', 'LIKE', '%'.$search.'%')
+                ->orWhere('firstname', 'LIKE', '%'.$search.'%')
+                ->orWhere('school', 'LIKE', '%'.$search.'%')
+                ->orWhere('division', 'LIKE', '%'.$search.'%');
         }
 
         $total = $passers->count();

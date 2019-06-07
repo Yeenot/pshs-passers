@@ -33,7 +33,7 @@
               </div>
             </div>
             <advanced-table :url="api.passers.list"
-              :headers="headers" :search="search"></advanced-table>
+              :headers="headers" :search="search" ref="passers"></advanced-table>
           </div>
         </div>
       </div>
@@ -178,6 +178,7 @@ export default {
         axios.post(`${parent.api.passers.add}`, data)
           .then(function(response) {
             if (response.status == 200) {
+              parent.$refs.passers.reload();
               $('#modal-add-passer').modal('hide');
 
               parent.toaster.title = 'Success!';
