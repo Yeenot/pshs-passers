@@ -1,5 +1,5 @@
 # pshs-passers
-A single web application for PSHS Passers Code Challenge using Laravel-vue
+A single web application for PSHS Passers Code Challenge using Laravel-Vue
 
 <br/>Run the folllowing commands: <br/><br/>
 1.) `composer install` <br/>
