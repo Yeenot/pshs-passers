@@ -1,0 +1,14 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.content-wrapper {
+    max-width: 1200px;
+    width: 100%;
+    margin: 40px auto 0 auto;
+}
